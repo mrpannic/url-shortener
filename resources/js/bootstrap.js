@@ -4,11 +4,21 @@
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
+import { createApp } from 'vue';
 import axios from 'axios';
-window.axios = axios;
+import VueAxios from 'vue-axios';
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+import App from '../components/App.vue';
 
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axios.defaults.headers.common['Accept'] = 'application/json';
+axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('input[name="_token"]').value;
+axios.defaults.baseURL = '/api/';
+
+const app = createApp(App);
+
+app.use(VueAxios, axios);
+app.mount('#app');
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
