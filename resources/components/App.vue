@@ -1,13 +1,13 @@
 <template>
-    <div>
-        Test
-    </div>
+        <Form />
 </template>
 
 <script>
+import Form from './Form.vue';
 export default {
     name: 'App',
     components: {
+        Form
     },
     methods: {
     },
