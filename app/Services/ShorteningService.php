@@ -21,7 +21,10 @@ class ShorteningService
     }
 
     private function find(string $url) {
-        return ShortUrl::where('original_url', $url)->first();
+        if(Str::startsWith($url, 'http://') || Str::startsWith($url, 'https://'))
+            $url = explode("//",rtrim($url,"/"))[1];
+
+        return ShortUrl::where('original_url', 'like', $url)->first();
     }
 
     public function generateShortCode() {
