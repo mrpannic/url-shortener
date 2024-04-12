@@ -15,4 +15,8 @@ class ShortUrlController extends Controller
         $shortUrl = $this->shorteningService->shorten($request->url);
         return response()->json(new ShortUrlResource($shortUrl));
     }
+
+    public function redirect($shortCode) {
+        return $this->shorteningService->redirect($shortCode);
+    }
 }

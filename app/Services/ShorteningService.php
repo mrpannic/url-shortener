@@ -18,6 +18,7 @@ class ShorteningService
             'original_url' => $url,
             'short_code' => $this->generateShortCode()
         ]);
+        return $shortUrl;
     }
 
     private function find(string $url) {
@@ -26,5 +27,14 @@ class ShorteningService
 
     public function generateShortCode() {
         return Str::random(self::HASH_LENGTH);
+    }
+
+    public function redirect($shortCode) {
+        $shortUrl = ShortUrl::where('short_code', $shortCode)->first();
+        if (!$shortUrl) {
+            abort(404);
+        }
+
+        return redirect($shortUrl->original_url);
     }
 }

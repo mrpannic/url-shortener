@@ -35,7 +35,7 @@
         </div>
 
         <p v-if="shortUrl" class="mt-10 text-center text-sm text-gray-500">
-            Your Shortened URL is: <a :href="shortUrl" target="_blank">{{shortUrl}}</a>
+            Your Shortened URL is: <a class="hover:text-indigo-500" :href="shortUrl" target="_blank">{{shortUrl}}</a>
         </p>
 
         <p v-if="error" class="mt-10 text-center text-sm text-red-500">
@@ -68,12 +68,11 @@ export default {
         this.axios.post('shorten', {
             url: this.url
         }).then(response => {
-            console.log(response.data);
             this.shortUrl = response.data.short_url
             this.isDisabled = false
         }).catch(error => {
-            console.log(error);
             this.isDisabled = false
+            this.error = error.response.data.message
         });
         this.url = ''
     }
