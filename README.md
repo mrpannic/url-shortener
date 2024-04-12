@@ -16,12 +16,14 @@ npm run dev
 composer install
 ```
 <br>
-Then you can run:
+Then you can run:<br>
+
 ```
-npm run dev
+npm run dev 
 or
 npm run build
 ```
+
 <br>
 And then start your app in the browser either by entering the folder_name.test (if using valet) or by using 
 http://localhost:{port}, and also it is important to set APP_URL either valet (default url-shortener.test) or (http://localhost:${port})
