@@ -15,3 +15,4 @@ use App\Http\Controllers\ShortUrlController;
 */
 
 Route::post('shorten', [ShortUrlController::class, 'shorten']);
+Route::post('check-url', [ShortUrlController::class, 'checkUrl']);

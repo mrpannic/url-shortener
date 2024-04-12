@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use Hashids\Hashids;
 use App\Models\ShortUrl;
 use Illuminate\Support\Str;
 

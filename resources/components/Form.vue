@@ -52,7 +52,8 @@ export default {
     return {
       url: '',
       isDisabled: false,
-      shortUrl: ''
+      shortUrl: '',
+      error: ''
     };
   },
   computed: {
@@ -65,16 +66,35 @@ export default {
         this.isDisabled = true
         this.shortUrl = ''
         this.error = ''
-        this.axios.post('shorten', {
+        this.axios.post('check-url', {
             url: this.url
-        }).then(response => {
-            this.shortUrl = response.data.short_url
-            this.isDisabled = false
-        }).catch(error => {
+        })
+        .then(response => {
+            if(response.data.length) {
+                this.isDisabled = false
+                this.error = "The provided url is considered as a threat. Please provide a safe url."
+                return
+            }
+
+            this.axios.post('shorten', {
+                url: this.url
+            }).then(response => {
+                this.shortUrl = response.data.short_url
+                this.isDisabled = false
+                this.url = ''
+            }).catch(error => {
+                this.isDisabled = false
+                this.error = error.response.data.message
+                this.url = ''
+            });
+        })
+        .catch( error => {
             this.isDisabled = false
             this.error = error.response.data.message
-        });
-        this.url = ''
+        })
+    },
+    checkUrl() {
+
     }
   }
 };
