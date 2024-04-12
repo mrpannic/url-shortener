@@ -10,7 +10,7 @@ class LinkService
         return ShortUrl::all();
     }
 
-    public function find($shortCode) {
+    public function findByCode($shortCode) {
         return ShortUrl::where('short_code', $shortCode)->first();
     }
 }

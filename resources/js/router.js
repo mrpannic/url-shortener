@@ -15,7 +15,12 @@ const routes = [
             {
                 path: '/links',
                 name: 'Links',
-                component: () => import('./components/Main/Links.vue')
+                component: () => import('./components/Main/Links.vue'),
+            },
+            {
+                path: '/links/:hash',
+                name: 'Link',
+                component: () => import('./components/Links/Link.vue'),
             }
         ]
     }

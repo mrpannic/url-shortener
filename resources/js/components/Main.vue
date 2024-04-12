@@ -43,7 +43,7 @@ export default {
     data() {
         return {
             navigation: [
-                { name: 'Home', href: '#', current: true },
+                { name: 'Home', href: '#', current: false },
                 { name: 'Links', href: '#', current: false },
             ]
         }

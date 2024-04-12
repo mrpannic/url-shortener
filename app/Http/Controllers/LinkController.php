@@ -14,4 +14,9 @@ class LinkController extends Controller
         $links = $this->linkService->getAll();
         return response()->json(LinkResource::collection($links));
     }
+
+    public function show($shortCode) {
+        $link = $this->linkService->findByCode($shortCode);
+        return response()->json(new LinkResource($link));
+    }
 }

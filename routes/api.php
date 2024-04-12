@@ -19,4 +19,4 @@ Route::post('shorten', [ShortUrlController::class, 'shorten']);
 Route::post('check-url', [ShortUrlController::class, 'checkUrl']);
 
 Route::get('links', [LinkController::class, 'index']);
-// Route::get('links/{shortCode}', [LinksController::class, 'show']);
+Route::get('links/{shortCode}', [LinkController::class, 'show']);
