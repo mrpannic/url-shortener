@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LinkController;
 use App\Http\Controllers\ShortUrlController;
 
 /*
@@ -16,3 +17,6 @@ use App\Http\Controllers\ShortUrlController;
 
 Route::post('shorten', [ShortUrlController::class, 'shorten']);
 Route::post('check-url', [ShortUrlController::class, 'checkUrl']);
+
+Route::get('links', [LinkController::class, 'index']);
+// Route::get('links/{shortCode}', [LinksController::class, 'show']);

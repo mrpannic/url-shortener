@@ -9,8 +9,13 @@ const routes = [
         children: [
             {
                 path: '/',
-                name: 'form',
+                name: 'Home',
                 component: () => import('./components/Form.vue')
+            },
+            {
+                path: '/links',
+                name: 'Links',
+                component: () => import('./components/Main/Links.vue')
             }
         ]
     }
